@@ -133,8 +133,15 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - name: Mirror repository
-        uses: pixta-dev/repository-mirroring-action@v1.1.1
+      - name: Strip CI workflows from history before mirroring
+        run: |
+          pip install --user --quiet git-filter-repo
+          ~/.local/bin/git-filter-repo --force --invert-paths --path .github/workflows
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          target_repo_url: ${{ env.MIRROR_SSH_URL }}
-          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+      - name: Add mirror host to known_hosts
+        run: ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+      - name: Push filtered branch to mirror
+        run: git push --force "$MIRROR_SSH_URL" "HEAD:refs/heads/${{ github.ref_name }}"

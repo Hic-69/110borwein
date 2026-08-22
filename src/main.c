@@ -9,7 +9,11 @@
 
 int main(int ac, char **av)
 {
-    (void)ac;
-    (void)av;
-    return 0;
+    if (ac == 2 && strcmp(av[1], "-h") == 0) {
+        write_depend_on_output(1);
+        return 0;
+    } else {
+        write_depend_on_output(2);
+        return 84;
+    }
 }

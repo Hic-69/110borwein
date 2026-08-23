@@ -11,6 +11,7 @@ MAIN	=	src/main.c \
 
 SRC_FILES	=	src/error_cases.c \
 			src/function.c \
+			src/parsing.c \
 
 OBJ_MAIN	=	$(MAIN:.c=.o)
 

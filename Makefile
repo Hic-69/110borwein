@@ -10,6 +10,7 @@ CC	=	epiclang
 MAIN	=	src/main.c \
 
 SRC_FILES	=	src/error_cases.c \
+			src/function.c \
 
 OBJ_MAIN	=	$(MAIN:.c=.o)
 
@@ -20,7 +21,7 @@ NAME	=	110borwein
 all:	$(NAME)
 
 $(NAME):	$(OBJ_MAIN) $(OBJ_SRC_FILES)
-	$(CC) -o $(NAME) $(OBJ_MAIN) $(OBJ_SRC_FILES)
+	$(CC) -o $(NAME) $(OBJ_MAIN) $(OBJ_SRC_FILES) -lm
 
 clean:
 	find . -type f \( \
@@ -36,7 +37,7 @@ clean:
 
 
 tests_run:
-	$(CC) --coverage -o unit_tests $(SRC_FILES) tests/test_borwein.c -lcriterion
+	$(CC) --coverage -o unit_tests $(SRC_FILES) tests/test_borwein.c -lcriterion -lm
 	./unit_tests
 
 fclean:	clean

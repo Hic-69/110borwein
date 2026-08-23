@@ -18,7 +18,7 @@ double f_n(int n, double x)
         t = x / (2 * k + 1);
         if (t == 0.0)
             term = 1.0;
-        else 
+        else
             term = sin(t) / t;
         result *= term;
     }

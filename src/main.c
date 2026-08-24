@@ -7,6 +7,14 @@
 
 #include "../include/borwein.h"
 
+static void run_borwein(int n)
+{
+    double midpoint = integrate_midpoint(n, BORWEIN_LOWER_BOUND,
+        BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
+
+    display_result("Midpoint", n, midpoint);
+}
+
 int main(int ac, char **av)
 {
     int n;
@@ -16,6 +24,7 @@ int main(int ac, char **av)
         return 0;
     }
     if (ac == 2 && parse_n(av[1], &n)) {
+        run_borwein(n);
         return 0;
     }
     write_depend_on_output(2);

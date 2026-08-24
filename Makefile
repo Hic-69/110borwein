@@ -14,6 +14,7 @@ SRC_FILES	=	src/error_cases.c \
 			src/parsing.c \
 			src/midpoint.c \
 			src/trapezoidal.c \
+			src/simpson.c \
 			src/display_result.c \
 
 OBJ_MAIN	=	$(MAIN:.c=.o)

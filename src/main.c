@@ -13,9 +13,14 @@ static void run_borwein(int n)
         BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
     double trapezoidal = integrate_trapezoidal(n, BORWEIN_LOWER_BOUND,
         BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
+    double simpson = integrate_simpson(n, BORWEIN_LOWER_BOUND,
+        BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
 
     display_result("Midpoint", n, midpoint);
+    printf("\n");
     display_result("Trapezoidal", n, trapezoidal);
+    printf("\n");
+    display_result("Simpson", n, simpson);
 }
 
 int main(int ac, char **av)

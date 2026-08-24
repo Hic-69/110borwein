@@ -11,8 +11,11 @@ static void run_borwein(int n)
 {
     double midpoint = integrate_midpoint(n, BORWEIN_LOWER_BOUND,
         BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
+    double trapezoidal = integrate_trapezoidal(n, BORWEIN_LOWER_BOUND,
+        BORWEIN_UPPER_BOUND, BORWEIN_SUBINTERVALS);
 
     display_result("Midpoint", n, midpoint);
+    display_result("Trapezoidal", n, trapezoidal);
 }
 
 int main(int ac, char **av)

@@ -23,5 +23,6 @@ bool write_depend_on_output(int fd);
 double f_n(int n, double x);
 bool parse_n(const char *str, int *out);
 double integrate_midpoint(int n, double a, double b, int steps);
+double integrate_trapezoidal(int n, double a, double b, int steps);
 void display_result(const char *name, int n, double value);
 #endif /*BORWEIN_H_*/

@@ -10,10 +10,6 @@
 double integrate_midpoint(int n, double a, double b, int steps)
 {
     double h = (b - a) / steps;
-    double sum = 0.0;
-    int i;
-
-    for (i = 0; i < steps; i++)
-        sum += f_n(n, a + (i + 0.5) * h);
+    double sum = sum_integrate(n, a, h, 0, steps, 0.5);
     return sum * h;
 }

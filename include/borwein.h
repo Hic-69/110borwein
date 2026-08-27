@@ -26,4 +26,5 @@ double integrate_midpoint(int n, double a, double b, int steps);
 double integrate_trapezoidal(int n, double a, double b, int steps);
 double integrate_simpson(int n, double a, double b, int steps);
 void display_result(const char *name, int n, double value);
+double sum_integrate(int n, double a, double h, int start, int end, double integ);
 #endif /*BORWEIN_H_*/

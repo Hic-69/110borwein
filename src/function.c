@@ -7,7 +7,7 @@
 
 #include "../include/borwein.h"
 
-double f_n(int n, double x)
+double func_ti(int n, double x)
 {
     double result = 1.0;
     int k;

@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2026
 ** 110borwein
@@ -17,7 +16,8 @@ double integrate_trapezoidal(int n, double a, double b, int steps)
     return sum * h;
 }
 
-double sum_integrate(int n, double a, double h, int start, int end, double integ)
+double sum_integrate(int n, double a, double h, int start, int end,
+    double integ)
 {
     int i = start;
     double sum = 0.0;

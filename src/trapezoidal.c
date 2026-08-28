@@ -10,20 +10,19 @@
 double integrate_trapezoidal(int n, double a, double b, int steps)
 {
     double h = (b - a) / steps;
-    double sum = (f_n(n, a) + f_n(n, b)) / 2.0;
+    quad_range_t range = {a, h, 1, steps};
+    double sum = (func_n(n, a) + func_n(n, b)) / 2.0;
 
-    sum += sum_integrate(n, a, h, 1, steps, 0.0);
+    sum += sum_integrate(n, &range, 0.0);
     return sum * h;
 }
 
-double sum_integrate(int n, double a, double h, int start, int end,
-    double integ)
+double sum_integrate(int n, quad_range_t *range, double offset)
 {
-    int i = start;
+    int i = range->start;
     double sum = 0.0;
 
-    for (; i < end; i++) {
-        sum += f_n(n, a + (i + integ) * h);
-    }
+    for (; i < range->end; i++)
+        sum += func_n(n, range->a + (i + offset) * range->h);
     return sum;
 }

@@ -10,7 +10,8 @@
 double integrate_midpoint(int n, double a, double b, int steps)
 {
     double h = (b - a) / steps;
-    double sum = sum_integrate(n, a, h, 0, steps, 0.5);
+    quad_range_t range = {a, h, 0, steps};
+    double sum = sum_integrate(n, &range, 0.5);
 
     return sum * h;
 }

@@ -5,6 +5,10 @@
 ## makefile
 ##
 
+TEST_FILES = tests/test_borwein.c
+
+CRIT_FLAGS = --coverage -lcriterion -lm
+
 CC	=	epiclang
 
 MAIN	=	src/main.c \
@@ -42,7 +46,7 @@ clean:
 
 
 tests_run:
-	$(CC) --coverage -o unit_tests $(SRC_FILES) tests/test_borwein.c -lcriterion -lm
+	$(CC) -o unit_tests $(SRC_FILES) $(TEST_FILES) $(CRIT_FLAGS)
 	./unit_tests
 
 fclean:	clean

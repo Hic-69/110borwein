@@ -196,3 +196,18 @@ Test(borwein, n7_integral_strictly_less_than_pi_over_2)
 
     cr_assert(val < M_PI / 2.0);
 }
+
+Test(display_result, prints_name_value_and_diff, .init = redirect_all_std)
+{
+    char buf[256] = {0};
+    FILE *out;
+
+    display_result("Midpoint", 0, 1.5707651076);
+    fflush(stdout);
+    out = cr_get_redirected_stdout();
+    fseek(out, 0, SEEK_SET);
+    fread(buf, sizeof(char), sizeof(buf) - 1, out);
+    cr_assert(strstr(buf, "Midpoint:") != NULL);
+    cr_assert(strstr(buf, "I0 = 1.5707651076") != NULL);
+    cr_assert(strstr(buf, "diff = ") != NULL);
+}
